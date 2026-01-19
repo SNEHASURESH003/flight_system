@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Route</title>
+</head>
+<body>
+<h2>Add Airport Route</h2>
+
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save Route</button>
+</form>
+
+<a href="{% url 'add_airport' %}">Add Airport</a><br>
+<a href="{% url 'find_nth' %}">Find Nth Node</a>
+</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Shortest Node</title>
+</head>
+<body>
+<h2>Find Shortest Node Between Two Routes</h2>
+
+<form method="post">
+    {% csrf_token %}
+    Route 1 ID: <input type="number" name="route1_id" required><br><br>
+    Route 2 ID: <input type="number" name="route2_id" required><br><br>
+
+    <button type="submit">Find Shortest</button>
+</form>
+</body>
+</html>

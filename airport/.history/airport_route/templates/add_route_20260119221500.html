@@ -1,0 +1,11 @@
+<html>
+<head>
+    <title>Add Routes between airports</title>
+</head>
+<body>
+    <h1>Add New Route between Airports</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>

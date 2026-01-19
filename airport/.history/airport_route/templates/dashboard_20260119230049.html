@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flight Routes Dashboard</title>
+    <style>
+        body {
+            font-family: Arial;
+            background-color: #f4f6f9;
+            text-align: center;
+        }
+        .container {
+            margin-top: 50px;
+        }
+        .btn {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 25px;
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        h1 {
+            margin-bottom: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>✈️ Flight Routes System Dashboard</h1>
+
+    <a href="{% url 'add_airport' %}" class="btn">➕ Add Airport</a>
+    <a href="{% url 'add_route' %}" class="btn">➕ Add Route</a>
+    <a href="{% url 'find_nth' %}" class="btn">🔍 Find Nth Node</a>
+    <a href="{% url 'shortest_between' %}" class="btn">📉 Find Shortest Node</a>
+
+    <br><br>
+
+    <form action="{% url 'longest_node' 1 %}" method="get">
+        <button class="btn" type="submit">📊 Find Longest Node (Route 1)</button>
+    </form>
+
+</div>
+
+</body>
+</html>

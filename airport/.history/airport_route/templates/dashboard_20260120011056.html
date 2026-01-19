@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Flight Routes Dashboard</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #020617);
+            color: #e5e7eb;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            margin-top: 80px;
+        }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 36px;
+            color: #f8fafc;
+            letter-spacing: 1px;
+        }
+
+        .btn {
+            display: inline-block;
+            margin: 12px;
+            padding: 14px 30px;
+            text-decoration: none;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+        }
+
+        .btn.secondary {
+            background: linear-gradient(135deg, #16a34a, #14532d);
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.4);
+        }
+
+        .btn.secondary:hover {
+            background: linear-gradient(135deg, #15803d, #052e16);
+            box-shadow: 0 8px 25px rgba(22, 163, 74, 0.6);
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.9);
+            width: 72%;
+            margin: auto;
+            padding: 45px 40px;
+            border-radius: 22px;
+            box-shadow: 0 18px 45px rgba(0,0,0,0.7);
+        }
+
+        .longest-form {
+            margin-top: 35px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .longest-form h3 {
+            margin-bottom: 15px;
+            color: #facc15;
+            font-weight: 600;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .route-input {
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            width: 220px;
+            background-color: #020617;
+            color: #f8fafc;
+            outline: none;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .route-input:focus {
+            border: 1px solid #facc15;
+            box-shadow: 0 0 8px rgba(250, 204, 21, 0.7);
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+     <a href="{% url 'logout' %}" class="btn danger">🚪 Logout</a>
+    <div class="card">
+        <h1>✈️ Flight Routes System</h1>
+       
+
+
+        <a href="{% url 'list_airports' %}" class="btn">Airports</a>
+        <a href="{% url 'list_routes' %}" class="btn"> Airport Routes</a>
+        <a href="{% url 'find_nth' %}" class="btn secondary">🔍 Find Nth Node</a>
+        <a href="{% url 'shortest_between' %}" class="btn secondary">📉 Find Shortest Node</a>
+
+        <div class="longest-form">
+            <h3>📊 Find Longest Node</h3>
+
+            <form action="{% url 'longest_node' 0 %}" method="get"
+                  onsubmit="this.action=this.action.replace('/0/', '/' + document.getElementById('route_id').value + '/');">
+                
+                <div class="input-group">
+                    <input type="number" id="route_id" class="route-input" placeholder="Enter Route ID" required>
+                </div>
+
+                <button class="btn secondary" type="submit">Find Longest Node</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

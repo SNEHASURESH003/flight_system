@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Find Nth Node</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #020617);
+            color: #e5e7eb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 420px;
+            margin: 100px auto;
+            background: rgba(30, 41, 59, 0.9);
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #f8fafc;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #cbd5f5;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background-color: #020617;
+            color: #f8fafc;
+        }
+
+        input:focus, select:focus {
+            border: 1px solid #2563eb;
+            box-shadow: 0 0 5px #2563eb;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #f59e0b, #b45309);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #d97706, #92400e);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.6);
+        }
+
+        .link {
+            display: block;
+            margin-top: 18px;
+            text-align: center;
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🔍 Find Nth Node</h2>
+
+    <form method="post">
+        {% csrf_token %}
+
+        <label>Route ID</label>
+        <input type="number" name="route_id" required>
+
+        <label>N (Position)</label>
+        <input type="number" name="n" required>
+
+        <label>Direction</label>
+        <select name="direction">
+            <option value="left">Left</option>
+            <option value="right">Right</option>
+        </select>
+
+        <button type="submit">Search</button>
+    </form>
+
+    <a href="{% url 'dashboard' %}" class="link">⬅ Back to Dashboard</a>
+</div>
+
+</body>
+</html>
+

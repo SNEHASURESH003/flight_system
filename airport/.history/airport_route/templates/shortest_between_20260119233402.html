@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Find Shortest Node</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #020617);
+            color: #e5e7eb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 420px;
+            margin: 100px auto;
+            background: rgba(30, 41, 59, 0.9);
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #f8fafc;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #cbd5f5;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 18px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background-color: #020617;
+            color: #f8fafc;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, #ef4444, #7f1d1d);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .result-box {
+            margin-top: 25px;
+            padding: 15px;
+            background: #020617;
+            border-radius: 10px;
+            text-align: center;
+            color: #facc15;
+            font-weight: bold;
+        }
+
+        .error-box {
+            margin-top: 20px;
+            padding: 12px;
+            background: #7f1d1d;
+            color: #fff;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .link {
+            display: block;
+            margin-top: 18px;
+            text-align: center;
+            color: #60a5fa;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>📉 Find Shortest Node Between Routes</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        <label>Route 1 ID</label>
+        <input type="number" name="route1_id" required>
+
+        <label>Route 2 ID</label>
+        <input type="number" name="route2_id" required>
+
+        <button type="submit">Find Shortest</button>
+    </form>
+
+    {% if result %}
+        <div class="result-box">
+            Shortest Node: {{ result }}
+        </div>
+    {% endif %}
+
+    {% if error %}
+        <div class="error-box">
+            {{ error }}
+        </div>
+    {% endif %}
+
+    <a href="{% url 'dashboard' %}" class="link">⬅ Back to Dashboard</a>
+</div>
+
+</body>
+</html>
+

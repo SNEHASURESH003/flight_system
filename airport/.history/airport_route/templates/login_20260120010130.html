@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Login - Flight Routes</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #020617);
+            color: #e5e7eb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 400px;
+            margin: 120px auto;
+        }
+
+        .card {
+            background: rgba(30,41,59,0.9);
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            text-align: center;
+        }
+
+        h2 {
+            color: #f8fafc;
+            margin-bottom: 30px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            background-color: #020617;
+            color: #f8fafc;
+        }
+
+        input:focus {
+            border: 1px solid #2563eb;
+            box-shadow: 0 0 5px #2563eb;
+        }
+
+        button {
+            width: 100%;
+            padding: 23px;
+            margin-top: 10px;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            box-shadow: 0 8px 28px rgba(37, 99, 235, 0.6);
+        }
+
+        .error {
+            color: #f87171;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h2>🔐 Login</h2>
+
+        {% if form.errors %}
+            <p class="error">Invalid username or password</p>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required autofocus>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Longest Node Result</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #020617);
+            color: #e5e7eb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 450px;
+            margin: 120px auto;
+            background: rgba(30, 41, 59, 0.9);
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 25px;
+            color: #f8fafc;
+        }
+
+        .result {
+            background: #020617;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            font-size: 16px;
+            color: #cbd5f5;
+        }
+
+        .highlight {
+            color: #facc15;
+            font-weight: bold;
+        }
+
+        .link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #60a5fa;
+            text-decoration: none;
+        }
+
+        .link:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 28px;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>📊 Longest Duration Nodes</h2>
+
+    <div class="result">
+        Route From: <span class="highlight">{{ route.airport_code_from.code }}</span> →
+        {{ route.airport_code_to.code }}
+    </div>
+
+    <div class="result">
+        Longest Left Node: <span class="highlight">{{ longest_left }}</span>
+    </div>
+
+    <div class="result">
+        Longest Right Node: <span class="highlight">{{ longest_right }}</span>
+    </div>
+      <h2>⚠️ {{ message }}</h2>
+
+    <a href="{% url 'dashboard' %}" class="btn">⬅ Back to Dashboard</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Delete Route</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg,#0f172a,#020617); color:#e5e7eb; margin:0; padding:0; }
+        .container { width: 480px; margin:100px auto; }
+        .card { background: rgba(30,41,59,0.9); padding:40px; border-radius:18px; box-shadow:0 15px 40px rgba(0,0,0,0.6); text-align:center;}
+        h2 { color:#f87171; margin-bottom:20px; }
+        p { color:#f8fafc; margin-bottom:30px; }
+        strong { color:#facc15; }
+        button { width:100%; padding:12px; background:linear-gradient(135deg,#dc2626,#991b1b); color:white; border:none; border-radius:10px; font-weight:600; cursor:pointer; }
+        button:hover { background:linear-gradient(135deg,#991b1b,#7f1d1d); box-shadow:0 8px 25px rgba(220,38,38,0.6);}
+        .link { display:block; color:#60a5fa; margin-top:10px; text-decoration:none; font-weight:600; }
+        .link:hover { text-decoration:underline; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h2>🗑️ Delete Route</h2>
+        <p>Are you sure you want to delete the route from <strong>{{ route.airport_code_from.name }}</strong> to <strong>{{ route.airport_code_to.name }}</strong>?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit">Delete Route</button>
+        </form>
+        <a href="{% url 'list_routes' %}" class="link">⬅ Cancel</a>
+    </div>
+</div>
+</body>
+</html>

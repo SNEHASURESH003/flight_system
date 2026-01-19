@@ -1,0 +1,12 @@
+from .models import Route
+from django.urls import path
+from .views import add_airport, add_route, dashboard, find_nth_node, find_longest_node, find_shortest_between
+urlpatterns = [
+   path('airports/add/', add_airport, name='add_airport'),
+    path('routes/add/', add_route, name='add_route'),
+
+    path('routes/find-nth/', find_nth_node, name='find_nth'),
+     path('routeslongest-node/<int:route_id>/', find_longest_node, name='longest_node'),
+    path('routes/shortest/', find_shortest_between, name='shortest_between'),
+     path('', dashboard, name='dashboard'),
+]

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flight Routes Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #020617);
+            color: #e5e7eb;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.95);
+            padding: 50px 40px;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.7);
+            text-align: center;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 35px 80px rgba(0,0,0,0.8);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #f8fafc;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        
+        @keyframes fly {
+            0% { transform: translateX(0) rotate(0deg);}
+            50% { transform: translateX(20px) rotate(10deg);}
+            100% { transform: translateX(0) rotate(0deg);}
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            margin: 12px;
+            padding: 14px 30px;
+            text-decoration: none;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4);
+            transition: all 0.4s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.7);
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+        }
+
+        .btn.secondary {
+            background: linear-gradient(135deg, #16a34a, #14532d);
+            box-shadow: 0 4px 15px rgba(22, 163, 74, 0.4);
+        }
+
+        .btn.secondary:hover {
+            background: linear-gradient(135deg, #15803d, #052e16);
+            box-shadow: 0 8px 25px rgba(22, 163, 74, 0.6);
+        }
+
+        /* Longest Node Form */
+        .longest-form {
+            margin-top: 35px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        .longest-form h3 {
+            margin-bottom: 15px;
+            color: #facc15;
+            font-weight: 600;
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px #facc15, 0 0 10px #facc15; }
+            to { text-shadow: 0 0 20px #facc15, 0 0 40px #facc15; }
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .route-input {
+            padding: 12px;
+            border-radius: 12px;
+            border: none;
+            width: 220px;
+            background-color: #020617;
+            color: #f8fafc;
+            outline: none;
+            font-size: 14px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .route-input:focus {
+            border: 1px solid #facc15;
+            box-shadow: 0 0 10px #facc15;
+        }
+
+        /* Logout button top-right */
+        .logout-form {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .logout-form button {
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .card { padding: 40px 25px; }
+            h1 { font-size: 28px; }
+            .btn { font-size: 14px; padding: 12px 20px; }
+            .route-input { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="card">
+        <!-- Logout button -->
+        <form method="post" action="{% url 'logout' %}" class="logout-form">
+            {% csrf_token %}
+            <button type="submit" class="btn secondary">🚪 Logout</button>
+        </form>
+
+        <h1>✈️ Flight Routes System</h1>
+
+        <!-- Main buttons -->
+        <a href="{% url 'list_airports' %}" class="btn">Airports</a>
+        <a href="{% url 'list_routes' %}" class="btn">Airport Routes</a>
+        <a href="{% url 'find_nth' %}" class="btn secondary">🔍 Find Nth Node</a>
+        <a href="{% url 'shortest_between' %}" class="btn secondary">📉 Find Shortest Node</a>
+
+ 
+        <div class="longest-form">
+            <h3>📊 Find Longest Node</h3>
+
+            <form action="{% url 'longest_node' 0 %}" method="get"
+                  onsubmit="this.action=this.action.replace('/0/', '/' + document.getElementById('route_id').value + '/');">
+                <div class="input-group">
+                    <input type="number" id="route_id" class="route-input" placeholder="Enter Route ID" required>
+                </div>
+                <button class="btn secondary" type="submit">Find Longest Node</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

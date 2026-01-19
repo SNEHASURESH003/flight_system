@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Find Nth Node</title>
+</head>
+<body>
+<h2>Find Nth Left or Right Node</h2>
+
+<form method="post">
+    {% csrf_token %}
+    Route ID: <input type="number" name="route_id" required><br><br>
+    N: <input type="number" name="n" required><br><br>
+
+    Direction:
+    <select name="direction">
+        <option value="left">Left</option>
+        <option value="right">Right</option>
+    </select><br><br>
+
+    <button type="submit">Search</button>
+</form>
+</body>
+</html>

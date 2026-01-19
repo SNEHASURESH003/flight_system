@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Routes</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: linear-gradient(135deg,#0f172a,#020617); color: #e5e7eb; margin:0; padding:0; text-align:center;}
+        .container { width: 80%; margin: 50px auto; }
+        .card { background: rgba(30,41,59,0.9); padding: 30px; border-radius: 18px; box-shadow:0 15px 40px rgba(0,0,0,0.6);}
+        table { width: 100%; border-collapse: collapse; margin-top: 20px;}
+        th, td { padding: 10px; border-bottom: 1px solid rgba(255,255,255,0.1);}
+        th { color:#60a5fa;}
+        a { text-decoration: none; margin-right: 10px; }
+        a.edit { color: #facc15; }
+        a.delete { color: #f87171; }
+        .btn { margin-top: 20px; display:inline-block; padding: 10px 20px; border-radius:10px; background: #2563eb; color:white; text-decoration:none;}
+        .btn:hover { background:#1e40af;}
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <h2>🛫 Routes</h2>
+        <a href="{% url 'add_route' %}" class="btn">➕ Add Route</a>
+        <a href="{% url 'dashboard' %}" class="add-btn">⬅ Back to Dashboard</a>
+
+        {% if routes %}
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>From</th>
+                    <th>To</th>
+                    <th>Duration</th>
+                    <th>Position</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for route in routes %}
+                <tr>
+                    <td>{{ route.id }}</td>
+                    <td>{{ route.airport_code_from.name }}</td>
+                    <td>{{ route.airport_code_to.name }}</td>
+                    <td>{{ route.duration }}</td>
+                    <td>{{ route.position }}</td>
+                    <td>
+                        <a href="{% url 'edit_route' route.id %}" class="edit">✏️ Edit</a>
+                        <a href="{% url 'delete_route' route.id %}" class="delete">🗑️ Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <p style="margin-top:15px; color:rgba(255,255,255,0.7)">No routes available. Add a route above.</p>
+        {% endif %}
+    </div>
+</div>
+</body>
+</html>

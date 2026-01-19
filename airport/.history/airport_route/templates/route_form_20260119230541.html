@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Airport Route</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f172a, #020617);
+            color: #e5e7eb;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 480px;
+            margin: 100px auto;
+            background: rgba(30, 41, 59, 0.9);
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #f8fafc;
+        }
+
+        form p {
+            margin-bottom: 15px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: none;
+            outline: none;
+            background-color: #020617;
+            color: #f8fafc;
+        }
+
+        input:focus, select:focus {
+            border: 1px solid #2563eb;
+            box-shadow: 0 0 5px #2563eb;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            background: linear-gradient(135deg, #2563eb, #1e40af);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            background: linear-gradient(135deg, #1d4ed8, #1e3a8a);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.6);
+        }
+
+        .links {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .links a {
+            display: block;
+            margin: 8px 0;
+            color: #60a5fa;
+            text-decoration: none;
+            font-size: 14px;
+        }
+
+        .links a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>➕ Add Airport Route</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save Route</button>
+    </form>
+
+    <div class="links">
+        <a href="{% url 'add_airport' %}">➤ Add Airport</a>
+        <a href="{% url 'find_nth' %}">🔍 Find Nth Node</a>
+        <a href="{% url 'dashboard' %}">⬅ Back to Dashboard</a>
+    </div>
+</div>
+
+</body>
+</html>
