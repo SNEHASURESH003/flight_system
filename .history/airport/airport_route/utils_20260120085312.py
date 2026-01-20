@@ -60,8 +60,8 @@ def longest_node_on_duration(route, direction):
 
 #shortest_node_between_routes(Route1, Route2)
 #Step 1: Compare durations: 3 <= 4 
-
-#Output: 'D' 
+#Step 2: Return Route1's destination airport code: 'D'
+#Output: 'D' (since 3 < 4)
 def shortest_node_between_routes(route1, route2):
    
     if route1.duration <= route2.duration:

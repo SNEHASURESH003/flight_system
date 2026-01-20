@@ -28,11 +28,11 @@ def nth_left_or_right_node(route, n, direction):
 
 
 #longest_node_on_duration(route=A→B, direction='left')
-   #Step 1: current_airport=A → left routes from A: A→B (duration 2) → max_route=A→B → move to B
+   Step 1: current_airport=A → left routes from A: A→B (duration 2) → max_route=A→B → move to B
    #Step 2: current_airport=B → left routes from B: B→D (duration 3) → max_route=B→D → move to D
    #Step 3: current_airport=D → left routes from D: D→F (duration 1) → max_route remains B→D → move to F
-   #Step 4: current_airport=F → no left routes → stop
-   #Return: 'D'
+   Step 4: current_airport=F → no left routes → stop
+   Return: 'D'
 
 def longest_node_on_duration(route, direction):
     
@@ -53,15 +53,6 @@ def longest_node_on_duration(route, direction):
 
 
 
-
-
-#Route1: B → D, duration = 3
-#Route2: C → E, duration = 4
-
-#shortest_node_between_routes(Route1, Route2)
-#Step 1: Compare durations: 3 <= 4 
-
-#Output: 'D' 
 def shortest_node_between_routes(route1, route2):
    
     if route1.duration <= route2.duration:
